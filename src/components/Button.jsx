@@ -10,17 +10,18 @@ export default function Buttons()
     function calculate(calc)
     {
         let equation = calc.toString();
+        let myEquation;
 
         if(mul.test(equation))
         {
-            let myEquation = equation.replace(mul, function(match, a, b) {
+            myEquation = equation.replace(mul, function(match, a, b) {
                 return Number(a) * Number(b);
             });
             return calculate(myEquation);
         }
         else if(div.test(equation))
         {
-            let myEquation = equation.replace(div, function(match, a, b) {
+            myEquation = equation.replace(div, function(match, a, b) {
                 if(b != 0)
                     return Number(a) / Number(b);
                 else
@@ -30,14 +31,14 @@ export default function Buttons()
         }
         else if(add.test(equation))
         {
-            let myEquation = equation.replace(add, function(match, a, b) {
+            myEquation = equation.replace(add, function(match, a, b) {
                 return Number(a) + Number(b);
             });
             return calculate(myEquation);
         }
         else if(sub.test(equation))
         {
-            let myEquation = equation.replace(sub, function(match, a, b) {
+            myEquation = equation.replace(sub, function(match, a, b) {
                 return Number(a) - Number(b);
             });
             return calculate(myEquation);
