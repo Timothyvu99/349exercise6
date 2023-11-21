@@ -1,0 +1,32 @@
+1.) What were some of the challenges you encountered?
+
+The first problem when creating the calculator was getting used to the new features that React provides and the 
+slightly different syntax required to create the components. The second problem was trying to figure out how to 
+calculate the math from the screen.
+
+
+2.) Differentiate between Real DOM and Virtual DOM. List out a few differences.
+
+Real DOM:
+    - It is the actual structure of the webpage.
+    - React Update complete document in the Real DOM.
+    - React DOM is the actual webpage rendered on the browser any changes made directly reflect on the complete 
+      webpage.
+    - It represents the web page often called a document with a logical tree and each branch of the tree 
+      ends in a node and each node contains objects.
+    - All UI components need to be re-rendered for every DOM update.
+
+Virtual DOM:
+    - It is the virtual representation of Real DOM.
+    - React update the state changes in Virtual DOM first and then it syncs with Real DOM.
+    - It is just like a blueprint of a machine, can do changes in the blueprint but those 
+      changes will not directly apply to the machine.
+    - It makes the performance faster, not because the processing itself is done in less time. The reason is the 
+      amount of changed information – rather than wasting time on updating the entire page, you can dissect it 
+      into small elements and interactions.
+
+
+3.) What are some problems that React can solve for us?
+
+React is fast, simple, and scalable. It allows us to create web applications that can change data without having to 
+reload the page. It is also modular so that it allows us to reuse old code for other websites. 
