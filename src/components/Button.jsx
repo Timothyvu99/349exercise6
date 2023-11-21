@@ -1,6 +1,4 @@
 import React from "react";
-import Display from "./Display";
-import { useState } from "react";
 
 export default function Buttons()
 {
