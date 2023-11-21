@@ -4,153 +4,52 @@ import { useState } from "react";
 
 export default function Buttons()
 {
-    // const [value, setValue] = useState('0');
-    let value = 0;
-
-    let mul = /(\d+(?:\.\d+)?) ?\* ?(\d+(?:\.\d+)?)/ 
-    let div = /(\d+(?:\.\d+)?) ?\/ ?(\d+(?:\.\d+)?)/ 
-    let add = /(\d+(?:\.\d+)?) ?\+ ?(\d+(?:\.\d+)?)/ 
-    let sub = /(\d+(?:\.\d+)?) ?\- ?(\d+(?:\.\d+)?)/  
+    let mul = /(\d+(?:\.\d+)?) ?\* ?(\d+(?:\.\d+)?)/;
+    let div = /(\d+(?:\.\d+)?) ?\/ ?(\d+(?:\.\d+)?)/; 
+    let add = /(\d+(?:\.\d+)?) ?\+ ?(\d+(?:\.\d+)?)/; 
+    let sub = /(\d+(?:\.\d+)?) ?\- ?(\d+(?:\.\d+)?)/;  
    
-    function evaluate(expr)
+    function calculate(calc)
     {
-        if(mul.test(expr))
+        let equation = calc.toString();
+
+        if(mul.test(equation))
         {
-            let newExpr = expr.replace(mul, function(match, a, b) {
+            let myEquation = equation.replace(mul, function(match, a, b) {
                 return Number(a) * Number(b);
             });
-            return evaluate(newExpr);
+            return calculate(myEquation);
         }
-        else if(div.test(expr))
+        else if(div.test(equation))
         {
-            let newExpr = expr.replace(div, function(match, a, b) {
+            let myEquation = equation.replace(div, function(match, a, b) {
                 if(b != 0)
                     return Number(a) / Number(b);
                 else
-                    return Error()
+                    return Error();
             });
-            return evaluate(newExpr);
+            return calculate(myEquation);
         }
-        else if(add.test(expr))
+        else if(add.test(equation))
         {
-            let newExpr = expr.replace(add, function(match, a, b) {
+            let myEquation = equation.replace(add, function(match, a, b) {
                 return Number(a) + Number(b);
             });
-            return evaluate(newExpr);
+            return calculate(myEquation);
         }
-        else if(sub.test(expr))
+        else if(sub.test(equation))
         {
-            let newExpr = expr.replace(sub, function(match, a, b) {
+            let myEquation = equation.replace(sub, function(match, a, b) {
                 return Number(a) - Number(b);
             });
-            return evaluate(newExpr);
+            return calculate(myEquation);
         }
         else
         {
-            return expr;
+            return equation;
         }
     }
 
-    function calc(equation)
-    {
-        let myMath = new Function("return " + equation)
-        return myMath();
-    }
-
-    function calculate()
-    {
-        let equation = document.getElementById('screen').value;
-        let myString = equation.toString()
-        console.log(equation)
-       
-        // const math = myString.split('+');
-        // console.log(math);
-
-        let solve = 0;
-        let operator = ['+', '-', '*', '/']
-        let order = []
-
-        // const math = myString.split(operator[0])
-
-        // for(let i = 0; i < math.length; i++)
-        // {
-        //     solve += parseFloat(math[i])
-        // }
-
-
-        // let i = 0;
-        // while(i != null || i+1 != null)
-        // {
-        //     for(let j = 0; j < operator.length; j++)
-        //     {
-        //         if(myString[i+1] === operator[j])
-        //         {
-        //             let mySub = parseFloat(myString.substring(i));
-        //             console.log(mySub);
-        //         }
-        //     }
-        //     i++;
-        // }
-
-        let math = []
-        // let myMath;
-        let j = 0;
-        // while(operator[j] || operator[j] !== null)
-        // {  
-        //     if(myString[myString.length - 1] === operator[j])
-        //         break
-        //     // setValue(parseFloat(myString));
-        //     // equation.value = '';
-        //     j++;
-        // }
-
-        // console.log(value);
-
-        // switch(operator[j])
-        // {
-        //     case '+':
-        //         math = myString.split('+');
-        //         value += parseFloat(math[0]);
-        //         break;
-        //     case '-':
-        //         math = myString.split('-');
-        //         value -= parseFloat(math[0]);
-        //         break;
-        //     case '*':
-        //         math = myString.split('*');
-        //         value *= parseFloat(math[0]);
-        //         break;
-        //     case '/':
-        //         math = myString.split('/');
-        //         value /= parseFloat(math[0]);
-        //         break;
-
-        // }
-
-        // if(operator[j] === '+')
-        // {
-        //     const math = myString.split('+');
-        //     value += parseFloat(math[0]);
-        // }
-        // else if(operator[j] === '-')
-        // {
-        //     setValue(parseFloat(myString));
-        //     equation.value = '';
-        //     math += value
-        // }
-
-        // let solution = calc(myString)
-        let solution = evaluate(myString)
-
-        console.log(value)
-
-        return(
-            solution
-            // eval(myString)
-        //     console.log(math[0])
-            // value.toString()
-        );
-    }
 
     function clickHandle(value)
     {
@@ -158,17 +57,11 @@ export default function Buttons()
         
         if(value === '=')
         {
-            calc_screen.value = calculate()
+            calc_screen.value = calculate(calc_screen.value)
         }
-        // else if(value === '+' || value === '-' || value === '*' || value === '/')
-        // {
-        //     calc_screen.value += value
-        //     calc_screen.value += calculate()
-        // }
         else if(value === 'C')
         {
             calc_screen.value = "";
-            // value = 0;
         }
         else
         {
