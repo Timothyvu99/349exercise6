@@ -56,7 +56,7 @@ export default function Buttons()
         
         if(value === '=')
         {
-            calc_screen.value = calculate(calc_screen.value)
+            calc_screen.value = calculate(calc_screen.value);
         }
         else if(value === 'C')
         {
@@ -64,7 +64,7 @@ export default function Buttons()
         }
         else
         {
-            calc_screen.value += value
+            calc_screen.value += value;
         }
 
         return(
