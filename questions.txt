@@ -22,7 +22,7 @@ Virtual DOM:
     - It is just like a blueprint of a machine, can do changes in the blueprint but those 
       changes will not directly apply to the machine.
     - It makes the performance faster, not because the processing itself is done in less time. The reason is the 
-      amount of changed information – rather than wasting time on updating the entire page, you can dissect it 
+      amount of changed information - rather than wasting time on updating the entire page, you can dissect it 
       into small elements and interactions.
 
 
